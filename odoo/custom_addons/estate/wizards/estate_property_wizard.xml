@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<odoo>
+
+
+    <record id="estate_property_wizard_form" model="ir.ui.view">
+        <field name="name">estate.property.report.wizard</field>
+        <field name="model">estate.property.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Example of Wizard for Estate Property">
+            <group>
+                <group string="Assign customer between">
+                    <field name="from_date" />
+                    <field name="to_date" />
+                </group>
+                <group string="Customer">
+                    <field name="bundle_customer_id" />
+          
+                </group>
+            </group>
+            <div class="text-muted">
+                Click to print the report without filters
+            </div>
+            <footer>
+                <button name ="print_estate_property" string="Print Thing" class="btn-primary" type="object"/>
+                <button name ="cancel_wizard_estate_property" string="Cancel" class="btn-secondary" type="cancel"/>
+            </footer>
+
+            </form>
+        </field>
+    </record>
+    <record id="estate_property_wizard_action" model="ir.actions.act_window">
+        <field name="name">Example of wizard</field>
+        <field name="res_model">estate.property.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="estate_property_wizard_form"/>
+        <field name="target">new</field>
+    </record>
+      <!-- 
+    <menuitem 
+        id="estate_property_wizard_example"
+        name="Estate Property Example Wizard"
+        parent="estate_first_level_menu"
+        action="estate_property_wizard_action"
+        sequence="15" 
+    /> 
+      -->
+</odoo>
+
+<!-- 
+
+        <record id="your_wizard_action" model="ir.actions.act_window">
+        <field name="name">Import a csv file</field>
+        <field name="res_model">your_wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+        <menuitem id="your_wizard_menu"
+            parent="SOME_MENU_IN_PURCHASE"
+            action="your_wizard_action"
+                sequence="15" />
+
+-->

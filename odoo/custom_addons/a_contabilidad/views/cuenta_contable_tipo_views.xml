@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="account_account_tipo_view_search" model="ir.ui.view">
+        <field name="name">account.account.tipo.view.search</field>
+        <field name="model">account.account.tipo</field>
+        <field name="arch" type="xml">
+            <search string="Buscar Tipo de Cuenta">
+                <field name="name"/>
+
+				<filter string="Activos" name="elemento" domain="['|', ('elemento','=','1'), '|',('elemento','=','2'),('elemento','=','3') ]"/>
+				<filter string="Pasivos" name="elemento" domain="[('elemento', '=', '4')]"/>
+				<filter string="Patrimonio" name="elemento" domain="[('elemento', '=', '5')]"/>
+				<separator/>
+				<filter string="Ingresos" name="elemento" domain="['|', ('elemento','=','8'),('elemento','=','7')]"/>
+				<filter string="Gastos" name="elemento" domain="['|', ('elemento','=','9'),('elemento','=','6')]"/>
+
+                    
+            </search>
+        </field>
+    </record>
+	
+    <record id="account_account_tipo_view_form" model="ir.ui.view">
+        <field name="name">account.account.tipo.form</field>
+        <field name="model">account.account.tipo</field>
+        <field name="arch" type="xml">
+            <form string="Test_2">
+                <sheet>
+                    <div>
+                        Tipo de Cuenta Contable
+                    </div>
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                    <group>
+                        <group>
+                            <field name="description"/>
+                        </group>
+                        <group>
+                            <field name="elemento"/>
+                            <field name="reporte"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="account_account_tipo_view_tree" model="ir.ui.view">
+        <field name="name">account.account.tipo.tree</field>
+        <field name="model">account.account.tipo</field>
+        <field name="arch" type="xml">
+            <tree string="Tipos">
+                <field name="name" />
+                <field name="description"/>
+				<field name="reporte" width="0.2" />
+				<field name="elemento" width="0.3"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="account_account_tipo_action" model="ir.actions.act_window">
+        <field name="name">Tipos de Cuenta Contable</field>
+        <field name="res_model">account.account.tipo</field>
+        <field name="view_mode">tree,form</field>
+ 
+    </record>
+
+
+</odoo>

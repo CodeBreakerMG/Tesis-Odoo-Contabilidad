@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="estate_property_view_search" model="ir.ui.view">
+        <field name="name">estate.property.view.search</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="name"/>
+
+                <filter string="Activos" name="name" domain="[('active', '=', True)]"/>
+                <separator/>
+                <filter string="Lotes Grandes" name="size" domain="[('size', '>', 1000)]"/>
+                <group expand="1" string="Agrupar por">
+                    <filter string="Código Postal" name="post_code" context="{'group_by':'post_code'}"/>
+                </group>
+                    
+            </search>
+        </field>
+    </record>
+
+    <record id="estate_property_view_form" model="ir.ui.view">
+        <field name="name">estate.property.form</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+
+
+<form string="Test">
+     
+    <header>
+        <button name="estate_property_action_sell" type="object" string="Sell" confirm="¿Confirmar propiedad vendida?"/>
+        <button name="estate_property_action_cancel" type="object" string="Cancel" confirm="¿Confirmar cancelación de propiedad?"/>
+    </header>
+    
+    <sheet>
+        <h1>
+            <field name="name"/>
+        </h1>
+        <field name="property_tag_ids" widget="many2many_tags"/>
+
+        <group>
+            <group>
+                <field name="post_code"/>
+                <field name="availability_date"/>
+            </group>
+            <group>
+                <field name="selling_price"/>
+                <field name="best_price"/>
+            </group>
+        </group>    
+            <notebook>
+                <page string="Description">
+                    <group>
+                        <field name="description"/>
+                        <field name="number_of_bedrooms"/>
+                        <field name="size"/>
+                        <field name="total_size"/>
+                        <field name="property_type_id"/>
+                    </group>
+                </page>
+                <page string="Contact">
+                    <group>
+ 
+                        <field name="salesperson_id"/>
+                        <field name="partner_id"/>
+                    </group>
+                </page>
+                <page string="Tags">
+                    <group>
+ 
+                        <field name="property_tag_ids" widget="many2many_tags"/>
+                    </group>
+                </page>
+                <page string="Offers">
+   
+  
+                    <field name="offer_id" />
+
+                </page>
+            </notebook>
+    
+    </sheet>
+</form>
+        </field>
+    </record>
+
+    <record id="estate_property_view_tree" model="ir.ui.view">
+        <field name="name">estate.property.tree</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <tree string="Example">
+                <field name="name"/>
+                <field name="post_code"/>
+                <field name="size"/>
+                <field name="availability_date"/>
+                <field name="selling_price"/>
+                <field name="total_size"/>
+
+ 
+            </tree>
+        </field>
+    </record>
+
+    <record id="estate_property_action" model="ir.actions.act_window">
+        <field name="name">Properties</field>
+        <field name="res_model">estate.property</field>
+        <field name="view_mode">tree,form</field>
+ 
+    </record>
+
+
+</odoo>

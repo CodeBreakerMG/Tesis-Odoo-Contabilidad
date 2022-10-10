@@ -1,0 +1,10 @@
+Nombre,Descripcion,Elemento,Reporte
+Activo disponible y exigible,Activo disponible y exigible,1,bg
+Activo realizable,Activo realizable,2,bg
+Activo inmovilizado,Activo inmovilizado,3,bg
+Pasivo,Pasivo,4,bg
+Patrimonio neto,Patrimonio neto,5,bg
+Gastos por naturaleza,Gastos por naturaleza,6,egp
+Ingresos,Ingresos,7,egp
+Saldos intermediarios de gestión y determinación del resultado del ejercicio,Saldos intermediarios de gestión y determinación del resultado del ejercicio,8,egp
+Costos de producción y gastos por función,Costos de producción y gastos por función,9,egp

@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <menuitem
+        id="cuenta_contable_menu_root"
+        name="Contabilidad PE"
+        sequence="99"/>
+
+    <menuitem
+        id="cuenta_first_level_menu"
+        name="Cuentas Contables"
+        parent = "cuenta_contable_menu_root"
+        sequence="10"/>
+
+    <menuitem
+        id="cuenta_second_level_menu"
+        name="Tipos de Cuentas"
+        parent = "cuenta_contable_menu_root"
+        sequence="20"/>
+
+
+        <menuitem
+        id="cuenta_third_level_menu"
+        name="Gestión de Libros"
+        parent = "cuenta_contable_menu_root"
+        sequence="30"/>
+
+        <menuitem
+        id="cuenta_fourth_level_menu"
+        name="Asientos Contables"
+        parent = "cuenta_contable_menu_root"
+        sequence="40"/>
+    <menuitem
+        id="cuenta_contable_menu_action"
+        name="Cuentas Contables"
+        parent="cuenta_first_level_menu"
+        action="account.action_account_form" 
+        sequence="1"
+        />
+
+        <menuitem 
+        id="import_csv_account_account_wizard"
+        name="Importar Plan Contable"
+        parent="cuenta_first_level_menu"
+        action="import_csv_cuenta_cuenta_wizard_action"
+        sequence="2"
+        
+        />
+    <menuitem
+        id="cuenta_contable_tipo_menu_action"
+        name="Tipo de Cuentas Contables"
+        parent="cuenta_second_level_menu"
+        action="account_account_tipo_action"
+        sequence="1"/>
+
+    <menuitem 
+        id="import_csv_account_account_tipo_wizard"
+        name="Importar Tipos de Cuentas Contables"
+        parent="cuenta_second_level_menu"
+        action="import_csv_account_account_tipo_wizard_action"
+        sequence="2"
+    /> 
+
+    <menuitem 
+        id="libro_diario_menu_action"
+        name="Libros Diarios"
+        parent="cuenta_third_level_menu"
+        action="account.action_account_journal_form"
+        sequence="1"
+    /> 
+
+
+    <menuitem 
+        id="asientos_contables_menu_action"
+        name="Asientos Contables"
+        parent="cuenta_fourth_level_menu"
+        action="account.action_move_journal_line"
+        sequence="2"
+    /> 
+
+    <menuitem 
+        id="apuntes_contables_menu_action"
+        name="Apuntes Contables"
+        parent="cuenta_fourth_level_menu"
+        action="account.action_account_moves_all"
+        sequence="2"
+    /> 
+    <menuitem 
+        id="libro_diario_grupo_menu_action"
+        name="Grupos de Libros Diarios"
+        parent="cuenta_third_level_menu"
+        action="account.action_account_journal_group_list"
+        sequence="2"
+    /> 
+
+
+
+</odoo>

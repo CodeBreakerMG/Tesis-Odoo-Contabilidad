@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <data>
+        <record id="import_csv_estate_property_wizard_form" model="ir.ui.view">
+          <field name="name">import.csv.estate.property.wizard.form</field>
+          <field name="model">import.csv.estate.property.wizard</field>
+          <field name="arch" type="xml">
+        <form string="Import CSV File of Properties">
+          <group name="main">
+            <field name="csv_file" />
+          </group>
+    
+          <footer>
+                <button name="import_csv" type="object"
+                        string="Import" class="oe_highlight"/>
+                <button  special="cancel" string="Cancel"/>
+              </footer>
+    
+        </form>
+          </field>
+        </record>
+
+        <record id="import_csv_estate_property_wizard_action" model="ir.actions.act_window">
+            <field name="name">Wizard to Bulk Insert Properties from CSV</field>
+            <field name="res_model">import.csv.estate.property.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="import_csv_estate_property_wizard_form"/>
+            <field name="target">new</field>
+        </record>
+        <menuitem 
+            id="import_csv_estate_property_wizard"
+            name="Bulk Insert Properties"
+            parent="estate_first_level_menu"
+            action="import_csv_estate_property_wizard_action"
+            sequence="10" 
+        /> 
+           
+    </data>
+</odoo>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record model="ir.ui.view" id="menu_finance_inherit">
+        <field name="name">account</field>
+        <field name="model">account.menu_finance</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//menuitem[@string='Product Variants']" position='replace'>
+            <menuitem name=""/>         
+        </xpath>            
+        </field>
+    </record>
+    
+    <menuitem
+    id="account_menu_graphics"
+    name="Advertisements"
+    parent = "menu_finance"
+    sequence="6"/>
+</odoo>

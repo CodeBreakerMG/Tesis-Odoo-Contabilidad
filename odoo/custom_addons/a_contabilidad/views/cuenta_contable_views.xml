@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<odoo>
+<data>
+    <record model="ir.ui.view" id="view_account_form">
+        <field name="name">account.account.form.inherited</field>
+        <field name="model">account.account</field>
+        <field name="inherit_id" ref="account.view_account_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='accounting']" position="before">
+                <page name="contab" string="Contabilidad Conf">
+                    <group>   
+                    <group>
+                        <field name="tipo_de_cuenta" />
+                        <field name="jerarquia" />
+                    </group>
+                    <group>
+                        <field name="moneda" />
+                        <field name="utilizable" />
+                   
+                    </group>
+                </group>
+                </page>
+            </xpath>
+ 
+            <xpath expr="//field[@name='currency_id']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="view_account_list" model="ir.ui.view">
+        <field name="name">account.account.list.inherited</field>
+        <field name="model">account.account</field>
+        <field name="inherit_id" ref="account.view_account_list" />
+        <field name="arch" type="xml">
+
+            <xpath expr="//tree" position="replace">
+            <tree string="Tipos">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="jerarquia" string="Jerarquía"/>
+                <field name="moneda"  optional="hide"/>
+                <field name="tipo_de_cuenta"/>
+                <field name="group_id" optional="hide"/>
+                <field name="internal_type" invisible="1"/>
+                <field name="internal_group" invisible="1"/>
+                <field name="reconcile" widget="boolean_toggle" attrs="{'invisible': ['|', ('internal_type','=','liquidity'), ('internal_group', '=', 'off_balance')]}"/>
+                <field name="tax_ids" optional="hide" widget="many2many_tags"/>
+                <field name="tag_ids" optional="hide" widget="many2many_tags"/>
+                <field name="allowed_journal_ids" optional="hide" widget="many2many_tags"/>
+                <field name="currency_id" options="{'no_create': True}" groups="base.group_multi_currency"/>
+                <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+            </tree>
+        
+
+        </xpath>
+            <!--
+                <attribute name="create">0</attribute>
+                <attribute name="multi_edit">0</attribute>
+                <attribute name="delete">0</attribute>
+
+         
+            </xpath>
+            <xpath expr="//button[@name='action_read_account']" position="attributes">
+                <attribute name="invisible">True</attribute>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="user_type_id" widget="account_hierarchy_selection"/>
+                <field name="group_id" optional="hide"/>
+                <field name="internal_type" invisible="1"/>
+                <field name="internal_group" invisible="1"/>
+                <field name="reconcile" widget="boolean_toggle" attrs="{'invisible': ['|', ('internal_type','=','liquidity'), ('internal_group', '=', 'off_balance')]}"/>
+                <field name="tax_ids" optional="hide" widget="many2many_tags"/>
+                <field name="tag_ids" optional="hide" widget="many2many_tags"/>
+                <field name="allowed_journal_ids" optional="hide" widget="many2many_tags"/>
+                <field name="currency_id" options="{'no_create': True}" groups="base.group_multi_currency"/>
+                <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+                <button name="action_read_account" type="object" string="Setup" class="float-right btn-secondary"/>
+
+         
+            </xpath> -->
+        </field>
+    </record>
+
+</data>
+</odoo>
+
+ 

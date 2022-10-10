@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <data>
+        <record id="import_csv_account_account_tipo_wizard_form" model="ir.ui.view">
+          <field name="name">import.csv.account.account.tipo.wizard.form</field>
+          <field name="model">import.csv.account.account.tipo.wizard</field>
+          <field name="arch" type="xml">
+        <form string="Importar Tipos de Cuentas Contables desde Archivos CSV">
+          <group name="main">
+            <field name="csv_file" />
+          </group>
+    
+          <footer>
+                <button name="import_csv" type="object"
+                        string="Import" class="oe_highlight"/>
+                <button  special="cancel" string="Cancel"/>
+              </footer>
+    
+        </form>
+          </field>
+        </record>
+
+        <record id="import_csv_account_account_tipo_wizard_action" model="ir.actions.act_window">
+            <field name="name">Wizard to Bulk Insert Properties from CSV</field>
+            <field name="res_model">import.csv.account.account.tipo.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="import_csv_account_account_tipo_wizard_form"/>
+            <field name="target">new</field>
+        </record>
+
+           
+    </data>
+</odoo>
