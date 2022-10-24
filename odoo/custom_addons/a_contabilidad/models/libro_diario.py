@@ -31,7 +31,7 @@ class LibroDiario(models.Model):
     
     profit_account_id = fields.Many2one(
         comodel_name='account.account', check_company=True,
-        help="Used to register a profit when the ending balance of a cash register differs from what the system computes",
+        help="Registro de Ganancias",
         string='Profit Account',
         domain=lambda self: "[('deprecated', '=', False), ('company_id', '=', company_id), ('utilizable', '=', True),\
                              ('user_type_id.type', 'not in', ('receivable', 'payable')), \
@@ -39,7 +39,7 @@ class LibroDiario(models.Model):
                                                              self.env.ref('account.data_account_type_other_income').id])
     loss_account_id = fields.Many2one(
         comodel_name='account.account', check_company=True,
-        help="Used to register a loss when the ending balance of a cash register differs from what the system computes",
+        help="Cuenta para registrar las pérdidas",
         string='Loss Account',
         domain=lambda self: "[('deprecated', '=', False), ('company_id', '=', company_id), ('utilizable', '=', True),\
                              ('user_type_id.type', 'not in', ('receivable', 'payable')), \

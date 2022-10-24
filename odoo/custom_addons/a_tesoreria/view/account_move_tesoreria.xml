@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
 <odoo>
     
-    <record id="view_invoice_tree" model="ir.ui.view">
+    <record id="facturacion_listado.tree" model="ir.ui.view">
     <field name="name">account.invoice.tree</field>
     <field name="model">account.move</field>
+    <field name="inherit_id" ref="account..view_invoice_tree" />
     <field name="arch" type="xml">
         <tree string="Invoices"
               js_class="account_tree"
@@ -38,6 +39,7 @@
             <field name="currency_id" groups="base.group_multi_currency" optional="hide"/>
             <field name="company_currency_id" invisible="1"/>
             <field name="to_check" optional="hide" widget="boolean_toggle"/>
+
             <field name="payment_state"
             widget="badge"
             decoration-danger="payment_state == 'not_paid'"

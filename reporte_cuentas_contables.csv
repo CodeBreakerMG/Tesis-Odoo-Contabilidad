@@ -1,0 +1,67 @@
+code,name,nombre_elemento,elemento,debe,haber
+10,CAJA Y BANCOS,Activo disponible y exigible,1,5003.2,413.0
+12,CUENTAS POR COBRAR COMERCIALES - TERCEROS,Activo disponible y exigible,1,10667.2,5003.2
+13,CUENTAS POR COBRAR COMERCIALES - RELACIONADAS,Activo disponible y exigible,1,0.0,0.0
+14,CUENTAS POR COBRAR AL PERSONAL  A LOS ACCIONISTAS,Activo disponible y exigible,1,0.0,0.0
+16,CUENTAS POR COBRAR DIVERSAS - TERCEROS,Activo disponible y exigible,1,0.0,0.0
+17,CUENTAS POR COBRAR DIVERSAS - RELACIONADAS,Activo disponible y exigible,1,0.0,0.0
+18,SERVICIOS Y OTROS CONTRATADOS POR ANTICIPADO,Activo disponible y exigible,1,0.0,0.0
+19,ESTIMACION DE CUENTAS DE COBRANZA DUDOSA,Activo disponible y exigible,1,0.0,0.0
+20,MERCADERIAS,Activo realizable,2,0.0,0.0
+21,PRODUCTOS TERMINADOS,Activo realizable,2,0.0,0.0
+22,SUBPRODUCTOS  DESECHOS Y DESPERDICIOS,Activo realizable,2,0.0,0.0
+23,PRODUCTOS EN PROCESO,Activo realizable,2,0.0,0.0
+24,MATERIAS PRIMAS,Activo realizable,2,0.0,0.0
+25,MATERIALES AUXILIARES  SUMINISTROS Y REPUESTOS,Activo realizable,2,0.0,0.0
+26,ENVASES Y EMBALAJES,Activo realizable,2,0.0,0.0
+28,EXISTENCIAS POR RECIBIR,Activo realizable,2,0.0,0.0
+29,DESVALORIZACION DE EXISTENCIAS,Activo realizable,2,0.0,0.0
+32,ACTIVOS ADQUIRIDOS EN ARRENDAMIENTO FINANCIERO,Activo inmovilizado,3,0.0,0.0
+33,INMUEBLES  MAQUINARIA Y EQUIPO,Activo inmovilizado,3,0.0,0.0
+34,INTANGIBLES,Activo inmovilizado,3,0.0,0.0
+37,ACTIVO DIFERIDO,Activo inmovilizado,3,0.0,0.0
+39,DEPRECIACION  AMORTIZACION Y AGOTAMIENTO ACUMULADO,Activo inmovilizado,3,0.0,0.0
+40,TRIBUTOS Y APORTES AL SISTEMA PENSIONES Y SALUD PO,Pasivo,4,175.5,936.0
+41,REMUNERACIONES Y PARTICIPACIONES POR PAGAR,Pasivo,4,0.0,0.0
+42,CUENTAS POR PAGAR COMERCIALES TERCEROS,Pasivo,4,413.0,1150.5
+43,CUENTAS POR PAGAR COMERCIALES RELACIONADAS,Pasivo,4,0.0,0.0
+44,CUENTAS POR PAGAR A LOS ACCIONISTAS  DIRECTORES Y,Pasivo,4,0.0,0.0
+45,OBLIGACIONES FINANCIERAS,Pasivo,4,0.0,0.0
+46,CUENTAS POR PAGAR DIVERSAS TERCEROS,Pasivo,4,0.0,0.0
+47,CUENTAS POR PAGAR DIVERSAS RELACIONADAS,Pasivo,4,0.0,0.0
+49,PASIVO DIFERIDO,Pasivo,4,0.0,0.0
+50,CAPITAL,Patrimonio neto,5,0.0,0.0
+52,CAPITAL ADICIONAL,Patrimonio neto,5,0.0,0.0
+57,EXCEDENTE DE REVALUACION,Patrimonio neto,5,0.0,0.0
+58,RESERVAS,Patrimonio neto,5,0.0,0.0
+59,RESULTADOS ACUMULADOS,Patrimonio neto,5,0.0,0.0
+60,COMPRAS,Gastos por naturaleza,6,975.0,0.0
+61,VARIACION DE EXISTENCIAS,Gastos por naturaleza,6,0.0,0.0
+62,GASTOS DE PERSONAL  DIRECTORES Y GERENTES,Gastos por naturaleza,6,0.0,0.0
+63,GASTOS DE SERVICIOS PRESTADOS POR TERCEROS,Gastos por naturaleza,6,0.0,0.0
+64,GASTOS POR TRIBUTOS,Gastos por naturaleza,6,0.0,0.0
+65,OTROS GASTOS DE GESTION,Gastos por naturaleza,6,0.0,0.0
+67,GASTOS FINANCIEROS,Gastos por naturaleza,6,0.0,0.0
+68,VALUACION Y DETERIORO DE ACTIVOS Y PROVISIONES,Gastos por naturaleza,6,0.0,0.0
+69,COSTO DE VENTAS,Gastos por naturaleza,6,0.0,0.0
+70,VENTAS,Ingresos,7,0.0,9731.2
+71,VARIACION DE LA PRODUCCION ALMACENADA,Ingresos,7,0.0,0.0
+72,PRODUCCION DE ACTIVO INMOVILIZADO,Ingresos,7,0.0,0.0
+73,DESCUENTOS  REBAJAS Y BONIFICACIONES OBTENIDOS,Ingresos,7,0.0,0.0
+74,DESCUENTOS  REBAJAS Y BONIFICACIONES CONCEDIDOS,Ingresos,7,0.0,0.0
+75,OTROS INGRESOS DE GESTION,Ingresos,7,0.0,0.0
+77,INGRESOS FINANCIEROS,Ingresos,7,0.0,0.0
+79,CARGAS IMPUTABLES A CUENTAS DE COSTOS Y GASTOS,Ingresos,7,0.0,0.0
+80,MARGEN COMERCIAL,Saldos intermediarios de gestión y determinación del resultado del ejercicio,8,0.0,0.0
+81,PRODUCCION DEL EJERCICIO,Saldos intermediarios de gestión y determinación del resultado del ejercicio,8,0.0,0.0
+82,VALOR AGREGADO,Saldos intermediarios de gestión y determinación del resultado del ejercicio,8,0.0,0.0
+83,EXCEDENTE BRUTO (INSUFICIENCIA BRUTA) DE EXPLOTACI,Saldos intermediarios de gestión y determinación del resultado del ejercicio,8,0.0,0.0
+84,RESULTADO DE EXPLOTACION,Saldos intermediarios de gestión y determinación del resultado del ejercicio,8,0.0,0.0
+85,RESULTADO ANTES DE PARTICIPACIONES E IMPUESTOS,Saldos intermediarios de gestión y determinación del resultado del ejercicio,8,0.0,0.0
+87,PARTICIPACIONES DE LOS TRABAJADORES,Saldos intermediarios de gestión y determinación del resultado del ejercicio,8,0.0,0.0
+88,IMPUESTO A LA RENTA,Saldos intermediarios de gestión y determinación del resultado del ejercicio,8,0.0,0.0
+89,DETERMINACION DEL RESULTADO DEL EJERCICIO,Saldos intermediarios de gestión y determinación del resultado del ejercicio,8,0.0,0.0
+91,COSTO DE PRODUCCION,Costos de producción y gastos por función,9,0.0,0.0
+94,GASTOS DE ADMINISTRACION,Costos de producción y gastos por función,9,0.0,0.0
+95,GASTOS DE VENTAS,Costos de producción y gastos por función,9,0.0,0.0
+97,GASTOS FINANCIEROS,Costos de producción y gastos por función,9,0.0,0.0

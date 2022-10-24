@@ -20,7 +20,7 @@ class CuentaContable(models.Model):
                 required=True,
                 help="Tipo de Moneda: Nacional (MN), Extranjera (ME)")
 
-    utilizable = fields.Boolean('Utilizable', readonly = True,  help="Tipo de Moneda: Nacional (MN), Extranjera (ME)", compute = "_compute_utilizable",  store=True)
+    utilizable = fields.Boolean('Utilizable', readonly = True,  help="Cuenta Utilizable para asientos contables", compute = "_compute_utilizable",  store=True)
  
     @api.onchange("code")
     def _onchange_partner_id(self):

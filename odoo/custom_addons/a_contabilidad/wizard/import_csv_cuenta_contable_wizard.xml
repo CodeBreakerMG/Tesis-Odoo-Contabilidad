@@ -22,7 +22,7 @@
         </record>
 
         <record id="import_csv_cuenta_cuenta_wizard_action" model="ir.actions.act_window">
-            <field name="name">Wizard to Bulk Insert Properties from CSV</field>
+            <field name="name">Menú para importar el plan de cuentas</field>
             <field name="res_model">import.csv.account.account.wizard</field>
             <field name="view_mode">form</field>
             <field name="view_id" ref="import_csv_cuenta_cuenta_wizard_form"/>
