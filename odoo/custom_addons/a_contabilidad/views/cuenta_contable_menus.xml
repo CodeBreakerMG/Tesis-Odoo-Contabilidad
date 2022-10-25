@@ -107,5 +107,13 @@
         action="cuenta_contable_reporte_wizard_action"
         sequence="1"/>
 
+    <menuitem 
+        id="balance_general_reporte_wizard"
+        name="Balance General"
+        parent="cuenta_fifth_level_menu"
+        action="balance_general_reporte_wizard_action"
+        sequence="2"/>
+
+
 
 </odoo>

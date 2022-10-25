@@ -19,6 +19,7 @@
             'wizard/import_csv_cuenta_contable_tipo_wizard.xml',
             'wizard/import_csv_cuenta_contable_wizard.xml',
             'wizard/cuenta_contable_reporte_wizard.xml',
+            'wizard/balance_general_reporte_wizard.xml',
             'views/cuenta_contable_views.xml',
             'views/cuenta_contable_menus.xml'
             
