@@ -5,4 +5,5 @@
 #MODULO CREADO DESDE EL EJEMPLO DE ODOO
 
 from . import models
+from . import report
 from . import wizard

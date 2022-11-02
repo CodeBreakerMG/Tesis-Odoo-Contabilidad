@@ -29,9 +29,9 @@ MONTHS = [('1', 'Enero'),
           ('11', 'Noviembre'),
           ('12', 'Diciembre')]
 
-class BalanceGeneralReporte(models.TransientModel):
+class BalanceGeneralReport(models.TransientModel):
 
-    _name = "balance.general.reporte.wizard"
+    _name = "balance.general.report"
     _description = "Módulo para generar el reporte de balance General"
 
     downloadable_file_name = fields.Char(string='Nombre del Archivo', required=True, readonly=True, compute = "_compute_downloadable_file_name")
