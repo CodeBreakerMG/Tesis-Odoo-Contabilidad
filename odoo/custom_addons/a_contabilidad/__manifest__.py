@@ -16,6 +16,7 @@
     'data': [
             'security/ir.model.access.csv',
             'report/balance_general_report.xml',
+            'report/estado_resultados_report.xml',
             'views/cuenta_contable_tipo_views.xml',
             'wizard/import_csv_cuenta_contable_tipo_wizard.xml',
             'wizard/import_csv_cuenta_contable_wizard.xml',

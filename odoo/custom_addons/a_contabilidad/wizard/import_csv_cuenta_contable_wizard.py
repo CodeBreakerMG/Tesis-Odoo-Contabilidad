@@ -3,21 +3,25 @@ import numpy as np
 import base64
 import csv
 import io
-from odoo import api, models, fields
+import os
+from odoo import api, models, fields, exceptions
 
  
-
 class ImportCsvCuentaContableWizard(models.TransientModel):
 
     _name = "import.csv.account.account.wizard"
     _description = "Cargar Plan Contable"
 
-    # your file will be stored here:
-    csv_file = fields.Binary(string='CSV File', required=True)
-    #property_ids = fields.Many2one("account.account", string="Name", default=lambda self: self.env['account.account'].search([]))
+    csv_file = fields.Binary(string='Archivo en formato CSV')
+    downloadable_file_name = fields.Char(string='Nombre del Archivo', readonly=True)
+    downloadable_file = fields.Binary('File Data', readonly=True)
 
    
     def import_csv(self):
+
+        if not self.csv_file:
+            raise exceptions.ValidationErr("No se ha subido algún archivo en formato CSV.")          
+
         csv_data = base64.b64decode(self.csv_file)
         data_file = io.StringIO(csv_data.decode("utf-8"))
         data_file.seek(0)
@@ -74,22 +78,18 @@ class ImportCsvCuentaContableWizard(models.TransientModel):
             return 15
         else:
             return 18
-    """        
-    url, db, username, password = 'https://localhost:8069', 'odoo_tesis_db1', 'a20160500', 'test'
 
-    common = xmlrpc.client.ServerProxy('{}/xmlrpc/2/common'.format(url))
+    def download_example_file(self):
+        
+        dir_path = os.getcwd() + '/odoo/custom_addons/a_contabilidad/data/' 
+        name = 'plan_contable.csv'
+        
+        self.downloadable_file = base64.b64encode((open(dir_path + name, "rb")).read())
+        self.downloadable_file_name = name
+        url_string = '/web/content/'+ self._name + '/' + str(self.id) + '/downloadable_file/'+ self.downloadable_file_name +'?download=true'
 
-    uid = common.authenticate(db, username, password, {}) #authentication
-
-    if uid:
-        print("authentication succeeded")
-        models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(url))
-        property_types = models.execute_kw(db, uid, password, 'account.account.type', 'read', [list(range(1,100))], {'fields': ['name']})
-        for row in csv_reader:
-            print("---row---: ", row)
-            
-        print("Property Types from BD")
-        print(property_types)
-    else:
-        print("authentication failed")
-    """
+        return {
+            'type': 'ir.actions.act_url',
+            'name': 'contract',
+            'url': url_string
+        }

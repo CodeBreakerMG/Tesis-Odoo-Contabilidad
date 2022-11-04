@@ -4,7 +4,7 @@ import base64
 import os
 import warnings
 
-from odoo import api, models, fields
+from odoo import api, models, fields, exceptions
 from reportlab.pdfgen import canvas
 from datetime import datetime
 

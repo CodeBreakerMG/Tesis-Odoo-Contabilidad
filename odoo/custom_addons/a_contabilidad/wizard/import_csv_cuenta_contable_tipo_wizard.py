@@ -1,21 +1,26 @@
 import base64
 import csv
 import io
-from odoo import api, models, fields
-import xmlrpc.client
- 
+import os
+from odoo import api, models, fields, exceptions
+
 
 class ImportCsvCuentaContableTipoWizard(models.TransientModel):
 
     _name = "import.csv.account.account.tipo.wizard"
     _description = "Wizard to load Properties from CSV"
 
-    # your file will be stored here:
-    csv_file = fields.Binary(string='CSV File', required=True)
-    #property_ids = fields.Many2one("account.account.tipo", string="Name", default=lambda self: self.env['account.account.tipo'].search([]))
+    
+    csv_file = fields.Binary(string='Archivo en formato CSV')
+    downloadable_file_name = fields.Char(string='Nombre del Archivo', readonly=True)
+    downloadable_file = fields.Binary('File Data', readonly=True)
 
    
     def import_csv(self):
+
+        if not self.csv_file:
+            raise exceptions.ValidationErr("No se ha subido algún archivo en formato CSV.")
+            
         csv_data = base64.b64decode(self.csv_file)
         data_file = io.StringIO(csv_data.decode("utf-8"))
         data_file.seek(0)
@@ -42,23 +47,27 @@ class ImportCsvCuentaContableTipoWizard(models.TransientModel):
             self.env['account.account.tipo'].create(entry)
             
         
-
-    """        
-    url, db, username, password = 'https://localhost:8069', 'odoo_tesis_db1', 'a20160500', 'test'
-
-    common = xmlrpc.client.ServerProxy('{}/xmlrpc/2/common'.format(url))
-
-    uid = common.authenticate(db, username, password, {}) #authentication
-
-    if uid:
-        print("authentication succeeded")
-        models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(url))
-        property_types = models.execute_kw(db, uid, password, 'account.account.tipo.type', 'read', [list(range(1,100))], {'fields': ['name']})
-        for row in csv_reader:
-            print("---row---: ", row)
+    def delete_cuentas(self):
+        account_id_list = self.env['account.account'].search([])
+        for record in account_id_list:
             
-        print("Property Types from BD")
-        print(property_types)
-    else:
-        print("authentication failed")
-    """
+            account_complete = account_id_list.browse(record.id)
+            try:
+                account_complete.unlink()
+            except:
+                pass
+
+    def download_example_file(self):
+        
+        dir_path = os.getcwd() + '/odoo/custom_addons/a_contabilidad/data/' 
+        name = 'tipos_cuentas_contables.csv'
+        
+        self.downloadable_file = base64.b64encode((open(dir_path + name, "rb")).read())
+        self.downloadable_file_name = name
+        url_string = '/web/content/'+ self._name + '/' + str(self.id) + '/downloadable_file/'+ self.downloadable_file_name +'?download=true'
+
+        return {
+            'type': 'ir.actions.act_url',
+            'name': 'contract',
+            'url': url_string
+        }

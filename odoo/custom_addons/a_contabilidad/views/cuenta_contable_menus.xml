@@ -3,8 +3,8 @@
 
     <menuitem
         id="cuenta_contable_menu_root"
-        name="Contabilidad PE"
-        sequence="99"/>
+        name="Gest. Contabilidad"
+        sequence="1"/>
 
     <menuitem
         id="cuenta_first_level_menu"
@@ -21,7 +21,7 @@
 
     <menuitem
         id="cuenta_third_level_menu"
-        name="Gestión de Libros"
+        name="Libros/Impuestos"
         parent = "cuenta_contable_menu_root"
         sequence="30"/>
 
@@ -30,6 +30,12 @@
         name="Asientos Contables"
         parent = "cuenta_contable_menu_root"
         sequence="40"/>
+
+    <menuitem
+        id="cuenta_fifth_level_menu"
+        name="Reportes Contables"
+        parent = "cuenta_contable_menu_root"
+        sequence="50"/>
 
     <menuitem
         id="cuenta_contable_menu_action"
@@ -70,6 +76,13 @@
         sequence="1"
     /> 
 
+    <menuitem 
+        id="impuestos_menu_action"
+        name="Impuestos"
+        parent="cuenta_third_level_menu"
+        action="account.action_tax_form"
+        sequence="2"
+    /> 
 
     <menuitem 
         id="asientos_contables_menu_action"
@@ -86,12 +99,30 @@
         action="account.action_account_moves_all"
         sequence="2"
     /> 
+
     <menuitem 
-        id="libro_diario_grupo_menu_action"
-        name="Grupos de Libros Diarios"
-        parent="cuenta_third_level_menu"
-        action="account.action_account_journal_group_list"
+        id="cuentas_contables_menu_action"
+        name="Reporte de Cuentas Contables (General)"
+        parent="cuenta_fifth_level_menu"
+        action="cuenta_contable_reporte_wizard_action"
+        sequence="1"
+    /> 
+
+    <menuitem 
+        id="balance_general_menu_action"
+        name="Balance General"
+        parent="cuenta_fifth_level_menu"
+        action="balance_general_report_action"
         sequence="2"
+    /> 
+
+
+    <menuitem 
+        id="estado_resultados_menu_action"
+        name="Estado de Ganancias y Pérdidas"
+        parent="cuenta_fifth_level_menu"
+        action="estado_resultados_report_action"
+        sequence="3"
     /> 
 
 </odoo>

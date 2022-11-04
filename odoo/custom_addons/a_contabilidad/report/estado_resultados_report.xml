@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <data>
+        <record id="estado_resultados_report_form" model="ir.ui.view">
+            <field name="name">estado.resultados.report.form</field>
+            <field name="model">estado.resultados.report</field>
+            <field name="arch" type="xml">
+            <form string="Imprimir Plan Contable">
+              <group name="main">
+                <group name="main_left">
+                    <field name="year" />
+                    <field name="time_select" invisible="1" />
+                    <field name="month" attrs="{'invisible':[('time_select','=',True)]}"/>
+                      
+                    
+
+                    <hr/>
+                    <field name="downloadable_file_name"/>
+                  </group>
+                <group name="main_right">
+                    <field name="currency" widget="radio"/>
+                    <field name="unit" widget="radio"/>
+                    <field name="time_period" widget="radio"/>
+                </group>
+              </group>
+              <footer>
+                <button name="save_to_file" type="object"
+                  string="Descargar" class="oe_highlight"  icon="fa-download"/>
+                <button  special="cancel" string="Cancel"/>
+              </footer>
+            </form>
+            </field>
+          </record>
+  
+          <record id="estado_resultados_report_action" model="ir.actions.act_window">
+              <field name="name">Estado de Ganancias y Pérdidas</field>
+              <field name="res_model">estado.resultados.report</field>
+              <field name="view_mode">form</field>
+              <field name="view_id" ref="estado_resultados_report_form"/>
+              <field name="target">new</field>
+           </record>
+    </data>
+
+</odoo>

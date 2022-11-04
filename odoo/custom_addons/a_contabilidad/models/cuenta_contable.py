@@ -9,7 +9,7 @@ class CuentaContable(models.Model):
     _inherit = 'account.account'
     
     jerarquia = fields.Integer('Nivel de Jerarquía')
-    tipo_de_cuenta = fields.Many2one("account.account.tipo", required = True, string="Tipo de Cuenta")
+    tipo_de_cuenta = fields.Many2one("account.account.tipo", required = False, string="Tipo de Cuenta")
     
     moneda = fields.Selection([
                 ('mn', 'Moneda Nacional (S/)'),
@@ -51,7 +51,7 @@ class CuentaContable(models.Model):
 
                 
     @api.onchange("tipo_de_cuenta")
-    def _onchange_currency(self):
+    def _onchange_tipo_cuenta(self):
         
         if self.tipo_de_cuenta.elemento < 4:
             self.user_type_id  = self.env['account.account.type'].search([('name', '=', 'Current Assets')])
