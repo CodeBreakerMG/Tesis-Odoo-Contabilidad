@@ -12,7 +12,10 @@
                 <field name="ref"/>
                 <field name="date"/>
                 <field name="estado_de_pago"/>
+                <field name="saldo_pendiente"/>
+                <field name="saldo_pagado"/>
                 <field name="move_type" />
+                <field name="state" />
                 <templates>
                     <t t-name="kanban-box">
                         <div t-attf-class="oe_kanban_global_click">
@@ -42,11 +45,22 @@
                                     <span><field name="ref"/></span>
                                 </div>
                             </div>
+                            <br></br>
                             <div class="row">
+                                <t t-value="record.estado_de_pago.raw_value" t-set="raw_estado_pago"/>
                                 <div class="col-6">
-                                    <span><field name="amount_total" widget='monetary'/></span>
-                                    <span><field name="currency_id" invisible="1"/></span>
+                                        <span>
+                                            <h6>
+                                                <a t-if="raw_estado_pago != 'draft'" >Saldo Pendiente</a>
+                                                <a t-if="raw_estado_pago == 'draft'" >Total</a>
+                                            </h6>
+                                            
+                                            <field name="saldo_pendiente" widget='monetary' attrs="{'invisible': [('estado_de_pago', '=', 'draft')]}" />
+                                            <field name="currency_id" invisible="1"/>
+                                        </span>
                                 </div>
+
+                
                                 <div class="col-6">
                                     <span class="float-right">
                                         <field name="estado_de_pago" 

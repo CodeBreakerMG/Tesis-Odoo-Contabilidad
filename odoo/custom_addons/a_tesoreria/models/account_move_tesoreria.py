@@ -21,7 +21,9 @@ class AccountMoveTesoreria(models.Model):
     _inherit = "account.move"
 
     estado_de_pago =   fields.Selection(PAYMENT_STATE_SELECTION, string="Estado del Pago", store=True, readonly=True, copy=False, tracking=True, compute='_compute_estado_pago')
-
+    saldo_pendiente = fields.Float("Saldo Pendiente", default=lambda self: self.amount_total, store=True, readonly=True, copy=False, tracking=True, compute='_compute_saldos')
+    saldo_pagado = fields.Float("Saldo Pagado", default = 0.0, store=True, readonly=True, copy=False, tracking=True, compute='_compute_saldos')
+    
     @api.depends("state", "payment_state")
     def _compute_estado_pago(self):
         for record in self:
@@ -29,4 +31,16 @@ class AccountMoveTesoreria(models.Model):
                 record.estado_de_pago = record.state
             else:
                 record.estado_de_pago = record.payment_state
+
+    @api.depends("amount_total", "amount_residual")
+    def _compute_saldos(self):
+        for record in self:
+            record.saldo_pagado = record.amount_total - record.amount_residual
+            record.saldo_pendiente = record.amount_residual
+         
+    @api.onchange("amount_residual")
+    def _onchange_saldos(self):
+        
+        self.saldo_pagado = self.amount_total - self.amount_residual
+        self.saldo_pendiente = self.amount_residual
  
