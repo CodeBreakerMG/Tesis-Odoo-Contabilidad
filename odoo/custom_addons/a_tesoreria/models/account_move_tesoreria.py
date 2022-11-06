@@ -3,14 +3,16 @@ from odoo import api, fields, models
 
 
 PAYMENT_STATE_SELECTION = [
+        ('draft', 'Borrador'),
         ('not_paid', 'Sin Pagar'),
         ('in_payment', 'En Proceso de pago'),
-        ('paid', 'Pagado'),
+        
         ('partial', 'Parcialmente Pagado'),
+        ('paid', 'Pagado'),
         ('reversed', 'Reversed'),
         ('invoicing_legacy', 'Invoicing App Legacy'),
         
-        ('draft', 'Borrador'),
+        
         ('posted', 'Publicado'),
         ('canceled', 'Cancelado'),
 ]
@@ -44,3 +46,16 @@ class AccountMoveTesoreria(models.Model):
         self.saldo_pagado = self.amount_total - self.amount_residual
         self.saldo_pendiente = self.amount_residual
  
+    def open_action(self):
+        return {
+                'name': self.name,
+                'res_model': 'account.move',
+                'type': 'ir.actions.act_window',
+                'res_id' : self.id,
+                'view_mode': 'form',
+                'view_type': 'form',
+                'view_id': self.env.ref("account.view_move_form").id,
+                'target': 'current',
+                #'context': {'active_id': self.id, 'id': self.id }
+            }
+

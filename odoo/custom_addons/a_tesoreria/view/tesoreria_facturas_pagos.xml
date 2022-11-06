@@ -12,7 +12,11 @@
                 <field name="ref"/>
                 <field name="date"/>
                 <field name="estado_de_pago"/>
+                <field name="saldo_pendiente"/>
+                <field name="amount_total"/>
+                <field name="saldo_pagado"/>
                 <field name="move_type" />
+                <field name="state" />
                 <templates>
                     <t t-name="kanban-box">
                         <div t-attf-class="oe_kanban_global_click">
@@ -20,8 +24,9 @@
                                 <div class="col-6 o_kanban_record_headings">
                                     <strong>
                                         <span>
-                                            <field name="name" />
-                                            
+                                            <a type="object" name="open_action">
+                                                <field name="name"/>
+                                            </a>
                                         </span>
                                     </strong>
                                 </div>
@@ -42,24 +47,47 @@
                                     <span><field name="ref"/></span>
                                 </div>
                             </div>
+                            <br></br>
                             <div class="row">
+                                <t t-value="record.state.raw_value" t-set="raw_estado_pago"/>
                                 <div class="col-6">
-                                    <span><field name="amount_total" widget='monetary'/></span>
-                                    <span><field name="currency_id" invisible="1"/></span>
+                                        <span>
+                                            <h6>
+                                                <a t-if="raw_estado_pago == 'posted'" >Saldo Pendiente</a>
+                                                <a t-if="raw_estado_pago != 'posted'" >Total</a>
+                                            </h6>
+                                            
+                                            <field name="saldo_pendiente" widget='monetary' attrs="{'invisible': [('state', '!=', 'posted')]}" />
+                                            <field name="amount_total" widget='monetary' attrs="{'invisible': [('state', '=', 'posted')]}" />
+                                            <field name="currency_id" invisible="1"/>
+                                        </span>
                                 </div>
                                 <div class="col-6">
-                                    <span class="float-right">
+                                    <span>
+                                        <h6>
+                                            <a t-if="raw_estado_pago == 'posted'" >Saldo Pagado</a>
+                                        </h6>
+                                        
+                                        <field name="saldo_pagado" widget='monetary' attrs="{'invisible': [('state', '!=', 'posted')]}" />
+                                        <field name="currency_id" invisible="1"/>
+                                    </span>
+                                </div>
+                            </div>
+                            <br></br>
+                            <div class="row">
+                                <div class="col-12">
+                                    <span >
                                         <field name="estado_de_pago" 
                                                widget="label_selection" 
                                                options="{'classes': {
-                                                    'canceled' : 'default',
                                                     'draft' : 'default',
-                                                    'in_payment' : 'warning',
-                                                    'invoicing_legacy' : 'info',
                                                     'not_paid' : 'danger',
-                                                    'paid' : 'success',
+                                                    'in_payment' : 'warning',
                                                     'partial' : 'warning',
-                                                    'reversed' : 'info'}}"/>
+                                                    'paid' : 'success',
+                                                    'canceled' : 'default',
+                                                    'reversed' : 'info',
+                                                    'invoicing_legacy' : 'info'}}"/>
                                     </span>
                                 </div>
                             </div>
