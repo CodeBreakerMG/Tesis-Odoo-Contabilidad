@@ -2,12 +2,17 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 {
-    'name': 'contabilidad',
+    'name' : 'Contabilidad PYME',
+    'author': "Manuel Moran Cavero - 20160500",
     'version' : '1.0',
-    'summary': 'Gestión de Contabilidad',
-    'sequence': 99,
-
-    'category': 'Accounting',
+    'summary': 'Módulo para la Gestión de Contabilidad',
+    'sequence': 12,
+    'category': 'Accounting/Accounting',
+    'description': """
+Módulo de Contabilidad
+====================
+Generación de Reportes y Estados Financieros
+    """,
 
     'depends': [
         'base',

@@ -1,20 +1,45 @@
 <?xml version="1.0"?>
 <odoo>
 
-    <record model="ir.ui.view" id="menu_finance_inherit">
-        <field name="name">account</field>
-        <field name="model">account.menu_finance</field>
-        <field name="inherit_id" ref="product.product_template_only_form_view" />
-        <field name="arch" type="xml">
-            <xpath expr="//menuitem[@string='Product Variants']" position='replace'>
-            <menuitem name=""/>         
-        </xpath>            
-        </field>
-    </record>
-    
+<data>
+    <!--
     <menuitem
     id="account_menu_graphics"
     name="Advertisements"
     parent = "menu_finance"
-    sequence="6"/>
+    sequence="99"/>
+    -->
+
+    <menuitem id="tesoreria_seguimiento_facturas" name="Seguimiento" parent = "account.menu_finance" sequence="1">
+        <menuitem id="tesoreria_facturas_ventas"   name="Facturas Emitidas"  action="open_tesoreria_facturas_cobros_kanban" sequence="1"/>
+        <menuitem id="tesoreria_facturas_compras"   name="Facturas Recibidas"  action="open_tesoreria_facturas_pagos_kanban" sequence="2"/>
+    </menuitem>
+
+    <menuitem id="tesoreria_dashboard_facturas" name="Dashboard" parent = "account.menu_finance" sequence="5" action="open_tesoreria_dashboard_dashboard_kanban">
+    </menuitem>
+
+    
+    <menuitem id="account.menu_board_journal_1" 
+        parent = "account.menu_finance"
+        name="Dashboard"
+        action="account.open_account_journal_dashboard_kanban" 
+        groups="make_invisible" 
+        sequence="99"/>
+    
+
+    <menuitem id="account.menu_finance_reports" 
+        parent = "account.menu_finance"
+        name="Reporting"
+        groups="make_invisible" 
+        sequence="98"/>
+    
+
+    <menuitem id="account.menu_finance_entries" 
+        parent = "account.menu_finance"
+        name="Accounting"
+        groups="make_invisible" 
+        sequence="97"/>
+
+</data>
+
 </odoo>
